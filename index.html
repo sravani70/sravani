@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sravani Gavallapalli - Windows Cloud Admin | Professional Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #2c3e50; 
+            overflow-x: hidden; 
+        }
+        
+        /* Sticky Enhanced Header */
+        header { 
+            background: rgba(52,73,94,0.95); 
+            backdrop-filter: blur(20px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        nav ul { display: flex; list-style: none; }
+        nav li { margin-left: 2rem; }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            padding: 0.7rem 1.5rem; 
+            border-radius: 25px; 
+            transition: all 0.3s; 
+            position: relative; 
+            font-weight: 500;
+        }
+        nav a:hover { 
+            background: rgba(255,255,255,0.2); 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Parallax Hero + Floating Background */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); 
+            color: white; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff20"><polygon points="0,100 500,0 1000,100"/></svg>') repeat;
+            animation: float 25s infinite linear;
+            opacity: 0.3;
+        }
+        @keyframes float { 
+            0% { transform: translateY(0) translateX(0); } 
+            100% { transform: translateY(-100px) translateX(-1000px); } 
+        }
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            max-width: 900px; 
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Profile Image Animation */
+        .profile-img { 
+            width: 220px; 
+            height: 220px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin: 0 auto 2rem; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+            border: 6px solid white; 
+            animation: pulse 2.5s infinite; 
+            transition: all 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+        @keyframes pulse { 
+            0%, 100% { transform: scale(1); } 
+            50% { transform: scale(1.03); } 
+        }
+        
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; }
+        .hero-subtitle { font-size: 1.4rem; margin-bottom: 2rem; opacity: 0.95; }
+        
+        /* Enhanced CTAs */
+        .cta-buttons { 
+            display: flex; 
+            gap: 1.5rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            margin-bottom: 2rem;
+        }
+        .btn-primary, .btn-secondary { 
+            padding: 1.2rem 2.8rem; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative; 
+            overflow: hidden;
+            font-size: 1.1rem;
+        }
+        .btn-primary { 
+            background: white; 
+            color: #667eea; 
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3); 
+        }
+        .btn-primary:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3); 
+        }
+        .btn-secondary { 
+            background: transparent; 
+            color: white; 
+            border: 3px solid white; 
+        }
+        .btn-secondary:hover { 
+            background: white; 
+            color: #667eea; 
+            transform: translateY(-5px);
+        }
+
+        /* Professional Contact Cards */
+        .contact-cards {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .contact-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+            min-width: 180px;
+        }
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255,255,255,0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        .contact-icon {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+        .contact-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        /* Section Styling */
+        section { 
+            padding: 100px 2rem; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        h2 { 
+            text-align: center; 
+            font-size: 2.8rem; 
+            margin-bottom: 4rem; 
+            color: #2c3e50; 
+            position: relative; 
+        }
+        h2::after { 
+            content: ''; 
+            display: block; 
+            width: 80px; 
+            height: 4px; 
+            background: linear-gradient(90deg, #667eea, #764ba2); 
+            margin: 1rem auto; 
+        }
+        
+        /* Animated Skill Progress Bars */
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 2.5rem; 
+        }
+        .skill-item { 
+            background: white; 
+            padding: 3rem; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08); 
+            transition: all 0.4s ease; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+        .skill-item:hover::before {
+            transform: scaleX(1);
+        }
+        .skill-item:hover { 
+            transform: translateY(-15px); 
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15); 
+        }
+        .skill-item h3 { 
+            margin-bottom: 2rem; 
+            color: #2c3e50; 
+            font-size: 1.4rem;
+        }
+        .progress-container { margin: 2rem 0; }
+        .progress-bar { 
+            height: 12px; 
+            background: #ecf0f1; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .progress-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, #667eea, #764ba2); 
+            border-radius: 12px; 
+            width: 0%; 
+            transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative;
+            box-shadow: 0 0 20px rgba(102,126,234,0.4);
+        }
+        .progress-fill::after { 
+            content: attr(data-percent); 
+            position: absolute; 
+            right: 12px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            color: white; 
+            font-size: 0.85rem; 
+            font-weight: bold; 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Interactive Timeline with Hover Expansion */
+        .timeline { 
+            position: relative; 
+            max-width: 900px; 
+            margin: 0 auto; 
+        }
+        .timeline::before { 
+            content: ''; 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 5px; 
+            height: 100%; 
+            background: linear-gradient(to bottom, #667eea, #764ba2); 
+            border-radius: 3px;
+        }
+        .timeline-item { 
+            display: flex; 
+            margin: 4rem 0; 
+            position: relative; 
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        .timeline-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { 
+            width: 48%; 
+            background: white; 
+            padding: 2.5rem; 
+            border-radius: 25px; 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            position: relative;
+            transform: scale(0.95);
+        }
+        .timeline-item:hover .timeline-content {
+            transform: scale(1.05);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.2);
+        }
+        .timeline-dot { 
+            width: 24px; 
+            height: 24px; 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            border-radius: 50%; 
+            position: absolute; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            z-index: 2; 
+            box-shadow: 0 0 0 6px white, 0 0 0 10px rgba(102,126,234,0.3);
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.3);
+            box-shadow: 0 0 0 8px white, 0 0 0 15px rgba(102,126,234,0.4);
+        }
+        .timeline-date { 
+            position: absolute; 
+            top: -3rem; 
+            right: -3rem; 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 0.8rem 1.5rem; 
+            border-radius: 25px; 
+            font-size: 0.95rem; 
+            font-weight: 700; 
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+        
+        /* Professional Contact Form */
+        .contact-form { 
+            max-width: 700px; 
+            margin: 0 auto 3rem; 
+            background: white; 
+            padding: 4rem; 
+            border-radius: 25px; 
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12); 
+        }
+        .form-group { 
+            margin-bottom: 2.5rem; 
+            position: relative; 
+        }
+        .form-group input, 
+        .form-group textarea { 
+            width: 100%; 
+            padding: 1.3rem 1.5rem; 
+            border: 3px solid #ecf0f1; 
+            border-radius: 15px; 
+            font-size: 1.1rem; 
+            transition: all 0.4s ease; 
+            background: #fafbfc;
+        }
+        .form-group input:focus, 
+        .form-group textarea:focus { 
+            outline: none; 
+            border-color: #667eea; 
+            box-shadow: 0 0 0 4px rgba(102,126,234,0.1); 
+            background: white;
+            transform: translateY(-2px);
+        }
+        .submit-btn { 
+            width: 100%; 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; 
+            padding: 1.5rem; 
+            border: none; 
+            border-radius: 15px; 
+            font-size: 1.2rem; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+        .submit-btn:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 50px rgba(102,126,234,0.4); 
+        }
+        
+        /* Responsive */
+        .hamburger { 
+            display: none; 
+            flex-direction: column; 
+            cursor: pointer; 
+        }
+        .hamburger span { 
+            width: 28px; 
+            height: 4px; 
+            background: white; 
+            margin: 4px 0; 
+            transition: 0.3s; 
+            border-radius: 2px;
+        }
+        @media (max-width: 768px) { 
+            .hamburger { display: flex; } 
+            nav ul { 
+                position: fixed; 
+                top: 70px; 
+                left: -100%; 
+                width: 100%; 
+                height: calc(100vh - 70px); 
+                background: rgba(52,73,94,0.98); 
+                flex-direction: column; 
+                justify-content: flex-start; 
+                align-items: center; 
+                padding-top: 3rem; 
+                transition: left 0.4s ease; 
+            } 
+            nav ul.active { left: 0; } 
+            nav li { margin: 1.5rem 0; } 
+            .timeline::before { left: 25px; } 
+            .timeline-item { flex-direction: column; } 
+            .timeline-content { width: 100%; margin: 3rem 0; } 
+            .timeline-dot { left: 25px; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .contact-cards { flex-direction: column; align-items: center; }
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div style="font-size: 1.8rem; font-weight: 700;">Sravani G.</div>
+            <ul id="nav-menu">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Parallax Hero + Professional Contact Cards -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <img src="your-photo.jpg" alt="Sravani Gavallapalli" class="profile-img">
+            <h1>Sravani Gavallapalli</h1>
+            <p class="hero-subtitle">
+                Windows Administrator | Cloud Specialist<br>
+                <span style="font-size: 1.2rem; opacity: 0.9;">Azure • AWS • OCI • Active Directory • VMware</span>
+            </p>
+            <!-- Enhanced CTAs - Prominent Resume Download -->
+            <div class="cta-buttons">
+                <a href="Sravani_Gavallapalli-Windows-Cloud-Admin.pdf" download class="btn-primary">
+                    📄 Download Resume
+                </a>
+                <a href="#contact" class="btn-secondary">Get In Touch</a>
+            </div>
+
+            <!-- ✨ PROFESSIONAL CONTACT CARDS - WhatsApp, Email, Phone, LinkedIn -->
+            <div class="contact-cards">
+                <a href="https://wa.me/917013245606?text=Hi%20Sravani%2C%20I'm%20interested%20in%20your%20Windows%20Cloud%20Admin%20profile" class="contact-card" target="_blank">
+                    <i class="fab fa-whatsapp contact-icon"></i>
+                    <div>WhatsApp</div>
+                    <div>+91 70132 45606</div>
+                </a>
+                <a href="mailto:sravanipisces701@gmail.com?subject=Windows%20Cloud%20Admin%20Opportunity" class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>Email</div>
+                    <div>sravanipisces701@gmail.com</div>
+                </a>
+                <a href="tel:+917013245606" class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div>Phone</div>
+                    <div>+91 70132 45606</div>
+                </a>
+                <a href="https://www.linkedin.com/in/sravani-gavallapalli-9841ba1b9" target="_blank" class="contact-card">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div>LinkedIn</div>
+                    <div>Connect Now</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Skill Progress Bars -->
+    <section id="skills">
+        <h2>Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h3>☁️ Cloud Platforms</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="92%"></div>
+                    </div>
+                </div>
+                <p>Azure, AWS (IAM, EC2, S3), Oracle Cloud Infrastructure</p>
+            </div>
+            <div class="skill-item">
+                <h3>🖥️ Windows Server</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="95%"></div>
+                    </div>
+                </div>
+                <p>Windows Server 2012/2016/2019/2022 Administration</p>
+            </div>
+            <div class="skill-item">
+                <h3>💾 Virtualization</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="88%"></div>
+                    </div>
+                </div>
+                <p>VMware vSphere, vCenter, vMotion, Templates</p>
+            </div>
+            <div class="skill-item">
+                <h3>🔐 Active Directory</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="90%"></div>
+                    </div>
+                </div>
+                <p>Azure AD, On-Prem AD, IAM, MFA, Group Policies</p>
+            </div>
+            <div class="skill-item">
+                <h3>⚡ PowerShell</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="85%"></div>
+                    </div>
+                </div>
+                <p>Automation, Scripting, System Administration</p>
+            </div>
+            <div class="skill-item">
+                <h3>🛠️ IT Operations</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-percent="93%"></div>
+                    </div>
+                </div>
+                <p>Patch Management (Tanium), ServiceNow, Incident Management</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Timeline with Hover Expansion -->
+    <section id="experience" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <h2>Professional Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>HCL Technologies</h3>
+                    <h4>Windows Administrator (Cloud Environment)</h4>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>✅ Managed Azure IAM/MFA, integrated Azure AD with on-prem AD</li>
+                        <li>✅ AWS EC2 instances, VPCs, S3 buckets, cloud security best practices</li>
+                        <li>✅ VMware vMotion migrations, templates, snapshots, vCenter management</li>
+                        <li>✅ Tanium patch management (Ring 1-3 deployment strategy)</li>
+                        <li>✅ Incident management, audit support, SLA achievement</li>
+                    </ul>
+                </div>
+                <div class="timeline-date">Sep 2023 - Present</div>
+                <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Acmegrade (Internship)</h3>
+                    <h4>Business Analyst</h4>
+                    <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                        <li>✅ Client relationship management and customer interactions</li>
+                        <li>✅ Product reviews, market trend analysis, competitor strategies</li>
+                        <li>✅ Business planning, growth strategies, cross-functional collaboration</li>
+                    </ul>
+                </div>
+                <div class="timeline-date">Jan 2023 - Aug 2023</div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Contact Form with Company Field -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Your Full Name *" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Your Email Address *" required>
+            </div>
+            <div class="form-group">
+                <input type="text" id="company" placeholder="Company / Position (Optional)">
+            </div>
+            <div class="form-group">
+                <textarea id="message" rows="6" placeholder="Your Message * (Tell me about the opportunity)" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message 🚀</button>
+        </form>
+        <div style="text-align: center; margin-top: 3rem; color: #7f8c8d; font-size: 1.1rem;">
+            <p>📄 <a href="Sravani_Gavallapalli-Windows-Cloud-Admin.pdf" download style="color: #667eea; font-weight: 600; font-size: 1.2rem;">Download Full Resume (PDF)</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Sravani Gavallapalli | Windows Cloud Administrator | Guntur, Andhra Pradesh</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">📍 Guntur, AP 522012 | Built with HTML5 • CSS3 • JavaScript</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle with smooth animation
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Animate skill progress bars on scroll
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.progress-fill');
+                    fills.forEach((fill, index) => {
+                        setTimeout(() => {
+                            fill.style.width = fill.getAttribute('data-percent');
+                        }, index * 200);
+                    });
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.skill-item').forEach(item => skillObserver.observe(item));
+
+        // Animate timeline items on scroll
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 300);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => timelineObserver.observe(item));
+
+        // Professional contact form handler with recruiter-friendly response
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                company: document.getElementById('company').value,
+                message: document.getElementById('message').value
+            };
+            
+            // Professional response for recruiters
+            const response = `Thank you ${formData.name}! 
+            Your message has been received successfully. 
+            I will respond within 24 hours with my availability for a call. 
+            Looking forward to discussing the opportunity!`;
+            
+            alert(response);
+            event.target.reset();
+            
+            // Scroll to top after submission
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Parallax effect on hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Enhanced sticky header effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(52,73,94,0.98)';
+                header.style.backdropFilter = 'blur(25px)';
+                header.style.boxShadow = '0 8px 30px rgba(0,0,0,0.25)';
+            } else {
+                header.style.background = 'rgba(52,73,94,0.95)';
+                header.style.backdropFilter = 'blur(20px)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Micro-interactions for enhanced UX
+        document.querySelectorAll('.skill-item, .timeline-content, .btn-primary, .btn-secondary, .contact-card').forEach(el => {
+            el.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            el.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
